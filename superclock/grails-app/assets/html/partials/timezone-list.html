@@ -1,0 +1,45 @@
+<h2>Timezones</h2>
+<div id="showTimezones" ng-show="timezones.length">
+
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="filter">Filter</label>
+                <input id="filter" type="text" class="form-control" placeholder="GMT" ng-model="searchTerm">
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>GMT Offset</th>
+                <th>Current Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="timezone in timezones | filter:searchTerm">
+                <td>{{timezone.name}}</td>
+                <td>{{timezone.city}}</td>
+                <td>{{timezone.gmtOffset}}</td>
+                <td>{{timezone.currentTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                <td>
+                    <a class="btn btn-default" href="" ng-click="editTimezone($index)">Edit</a>
+                    <a class="btn btn-danger" href="" confirmation-needed="Are you sure you would you like to delete {{timezone.name}}?" ng-click="deleteTimezone($index)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="noTimezones" ng-show="!timezones.length">
+    <p>There are no timezones to list at this time.</p>
+</div>
+<br><br>
+<div id="timezoneActions">
+    <button type="button" class="btn btn-primary" ng-click="createTimezone()">
+        Create Timezone
+    </button>
+</div>

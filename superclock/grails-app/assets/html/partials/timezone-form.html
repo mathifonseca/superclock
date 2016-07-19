@@ -1,0 +1,19 @@
+<div id="timezoneForm">
+    <h2>Create/Edit Timezone</h2>
+    <form role="form">
+        <div class="form-group" ng-class="{'has-error': errors.name}">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" type="text" ng-model="timezone.name" required="true"/>
+        </div>
+        <div class="form-group" ng-class="{'has-error': errors.city}">
+            <label for="city">City</label>
+            <input id="city" class="form-control" type="text" ng-model="timezone.city" required="true"/>
+        </div>
+        <div class="form-group" ng-class="{'has-error': errors.gmtOffset}">
+            <label for="gmtOffset">GMT Offset (minutes)</label>
+            <input id="gmtOffset" class="form-control" type="number" ng-model="timezone.gmtOffset" required="true"/>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="saveTimezone()">Save</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </form>
+</div>

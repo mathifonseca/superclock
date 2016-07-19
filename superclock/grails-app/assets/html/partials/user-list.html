@@ -1,0 +1,40 @@
+<h2>Users</h2>
+<dir-pagination-controls template-url="assets/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+<div id="showUsers" ng-show="users.length">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Roles</th>
+            <th>Enabled</th>
+            <th>Account Expired</th>
+            <th>Account Locked</th>
+            <th>Password Expired</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr dir-paginate="user in users | itemsPerPage: 10">
+            <td>{{user.username}}</td>
+            <td>{{user.roles}}</td>
+            <td>{{user.enabled}}</td>
+            <td>{{user.accountExpired}}</td>
+            <td>{{user.accountLocked}}</td>
+            <td>{{user.passwordExpired}}</td>
+            <td>
+                <a class="btn btn-default" href="" ng-click="editUser($index)">Edit</a>
+                <a class="btn btn-danger" href="" confirmation-needed="Are you sure you would you like to delete {{user.username}}?" ng-click="deleteUser($index)">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="noUsers" ng-show="!users.length">
+    <p>There are no users to list at this time.</p>
+</div>
+<br><br>
+<div id="userActions">
+    <button type="button" class="btn btn-primary" ng-click="createUser()">
+        Create User
+    </button>
+</div>
