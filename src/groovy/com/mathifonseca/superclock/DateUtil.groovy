@@ -10,7 +10,7 @@ class DateUtil {
 
         Calendar calendar = new GregorianCalendar(utc)
 
-        calendar.add(Calendar.MINUTE, offset)
+        calendar.add(Calendar.MINUTE, offset ?: 0)
 
         return calendar.time.format('yyyy-MM-dd HH:mm')
 
