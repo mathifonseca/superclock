@@ -1,5 +1,7 @@
 # SuperClock
 
+[![Build Status](https://travis-ci.org/mathifonseca/superclock.svg?branch=master)](https://travis-ci.org/mathifonseca/superclock)
+
 This is a very simple Grails application exposing a REST API consumed by an Angular.js application.
 
 ## Requirements
