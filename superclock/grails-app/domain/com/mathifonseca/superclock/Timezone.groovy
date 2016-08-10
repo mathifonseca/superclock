@@ -6,6 +6,10 @@ class Timezone {
     String city
     Integer gmtOffset //in minutes
 
+    String currentTime
+
+    static transients = ['currentTime']
+
     static belongsTo = [ user : User ]
 
     static constraints = {
@@ -16,18 +20,8 @@ class Timezone {
 
     static marshalling = {
         virtual {
-            currentTime { value, json -> json.value(value.getCurrentTime()) }
+            currentTime { value, json -> json.value(DateUtil.getCurrentTimeWithOffset(value.gmtOffset)) }
         }
-    }
-
-    Date getCurrentTime() {
-
-        Calendar calendar = new GregorianCalendar(timeZone: TimeZone.getTimeZone('UTC'))
-
-        calendar.add(Calendar.MINUTE, gmtOffset)
-
-        return calendar.time
-
     }
 
 }
